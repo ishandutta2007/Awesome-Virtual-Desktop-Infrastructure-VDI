@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#4facfe"/>
+    </linearGradient>
+
+    <linearGradient id="purple-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <!-- Radial Glow Filters -->
+    <filter id="blur-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur" />
+    </filter>
+
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <style>
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(1deg); }
+      }
+      @keyframes floatReverse {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(10px) rotate(-1deg); }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.65; transform: scale(1.08); }
+      }
+      @keyframes streamFlow {
+        0% { stroke-dashoffset: 400; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes radarSweep {
+        0% { stroke-dashoffset: 0; opacity: 0.2; }
+        50% { opacity: 0.8; }
+        100% { stroke-dashoffset: -300; opacity: 0.2; }
+      }
+
+      .floating-node-1 { animation: floatSlow 8s ease-in-out infinite; }
+      .floating-node-2 { animation: floatReverse 9s ease-in-out infinite; }
+      .pulsing-orb { animation: pulseGlow 6s ease-in-out infinite alternate; transform-origin: center; }
+      .data-stream { stroke-dasharray: 20 15; animation: streamFlow 12s linear infinite; }
+      .network-ring { stroke-dasharray: 8 6; animation: radarSweep 10s linear infinite; }
+
+      .title-text {
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+      }
+      .body-text {
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="420" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- Background Grid Pattern -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="70" x2="1200" y2="70"/>
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="280" x2="1200" y2="280"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+    <line x1="150" y1="0" x2="150" y2="420"/>
+    <line x1="300" y1="0" x2="300" y2="420"/>
+    <line x1="450" y1="0" x2="450" y2="420"/>
+    <line x1="600" y1="0" x2="600" y2="420"/>
+    <line x1="750" y1="0" x2="750" y2="420"/>
+    <line x1="900" y1="0" x2="900" y2="420"/>
+    <line x1="1050" y1="0" x2="1050" y2="420"/>
+  </g>
+
+  <!-- Ambient Pulsing Glow Orbs (Underneath) -->
+  <circle cx="200" cy="120" r="140" fill="#38bdf8" filter="url(#blur-glow)" class="pulsing-orb" opacity="0.25"/>
+  <circle cx="1020" cy="300" r="160" fill="#a855f7" filter="url(#blur-glow)" class="pulsing-orb" opacity="0.25"/>
+  <circle cx="920" cy="90" r="100" fill="#06b6d4" filter="url(#blur-glow)" class="pulsing-orb" opacity="0.2"/>
+
+  <!-- Animated Data Streams & Infrastructure Topology Lines -->
+  <g opacity="0.45">
+    <path d="M 80,320 Q 250,220 400,260 T 780,240 T 1120,120" fill="none" stroke="url(#cyan-glow)" stroke-width="2.5" class="data-stream"/>
+    <path d="M 120,100 Q 350,180 620,120 T 1080,310" fill="none" stroke="url(#purple-glow)" stroke-width="2" class="data-stream" style="animation-direction: reverse;"/>
+  </g>
+
+  <!-- Floating Dynamic Tech Nodes / Workspaces (Background/Middleground) -->
+  <g class="floating-node-1" opacity="0.65">
+    <!-- Cloud Node Left -->
+    <g transform="translate(70, 70)">
+      <rect width="110" height="65" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" opacity="0.8"/>
+      <circle cx="24" cy="24" r="8" fill="#38bdf8" opacity="0.9"/>
+      <rect x="42" y="20" width="50" height="8" rx="4" fill="#64748b"/>
+      <rect x="20" y="42" width="72" height="6" rx="3" fill="#334155"/>
+      <circle cx="95" cy="18" r="4" fill="#22c55e" />
+    </g>
+  </g>
+
+  <g class="floating-node-2" opacity="0.65">
+    <!-- Server Rack Node Right -->
+    <g transform="translate(1010, 80)">
+      <rect width="120" height="75" rx="10" fill="#1e293b" stroke="#818cf8" stroke-width="1.5" opacity="0.8"/>
+      <rect x="16" y="16" width="88" height="12" rx="3" fill="#334155"/>
+      <circle cx="26" cy="22" r="3" fill="#06b6d4"/>
+      <circle cx="36" cy="22" r="3" fill="#10b981"/>
+      <rect x="16" y="34" width="88" height="12" rx="3" fill="#334155"/>
+      <circle cx="26" cy="40" r="3" fill="#f59e0b"/>
+      <rect x="16" y="52" width="88" height="12" rx="3" fill="#334155"/>
+      <circle cx="26" cy="58" r="3" fill="#6366f1"/>
+    </g>
+  </g>
+
+  <!-- Main Center Header Backdrop (Ensures 100% Foreground Contrast & No Collision) -->
+  <g transform="translate(150, 45)" filter="url(#card-shadow)">
+    <rect width="900" height="325" rx="20" fill="#0c1322" fill-opacity="0.82" stroke="#1e293b" stroke-width="1.5"/>
+
+    <!-- Category Pill Header -->
+    <g transform="translate(305, 30)">
+      <rect width="290" height="32" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+      <circle cx="16" cy="16" r="5" fill="#38bdf8"/>
+      <text x="32" y="21" class="body-text" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="1.2">ENTERPRISE &amp; OPEN SOURCE VDI</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="450" y="125" text-anchor="middle" class="title-text" font-size="44" fill="url(#text-grad)">
+      Awesome VDI &amp; DaaS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="450" y="165" text-anchor="middle" class="body-text" font-size="17" font-weight="400" fill="#94a3b8">
+      Curated Ecosystem of Virtual Desktop Infrastructure, Cloud Desktops &amp; Streaming Protocols
+    </text>
+
+    <!-- Divider Line with Glow Center -->
+    <line x1="200" y1="195" x2="700" y2="195" stroke="#334155" stroke-width="1"/>
+    <circle cx="450" cy="195" r="4" fill="#818cf8"/>
+
+    <!-- Interactive Badges / Capability Pills -->
+    <g transform="translate(90, 225)">
+      <!-- Pill 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="125" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="62" y="23" text-anchor="middle" class="body-text" font-size="13" font-weight="600" fill="#e2e8f0">🖥️ Cloud PCs</text>
+      </g>
+      <!-- Pill 2 -->
+      <g transform="translate(145, 0)">
+        <rect width="135" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="67" y="23" text-anchor="middle" class="body-text" font-size="13" font-weight="600" fill="#e2e8f0">⚡ DaaS &amp; VDI</text>
+      </g>
+      <!-- Pill 3 -->
+      <g transform="translate(300, 0)">
+        <rect width="135" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="67" y="23" text-anchor="middle" class="body-text" font-size="13" font-weight="600" fill="#e2e8f0">🌐 WebRTC / VNC</text>
+      </g>
+      <!-- Pill 4 -->
+      <g transform="translate(455, 0)">
+        <rect width="130" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="65" y="23" text-anchor="middle" class="body-text" font-size="13" font-weight="600" fill="#e2e8f0">🔒 Isolation</text>
+      </g>
+      <!-- Pill 5 -->
+      <g transform="translate(605, 0)">
+        <rect width="120" height="36" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="60" y="23" text-anchor="middle" class="body-text" font-size="13" font-weight="600" fill="#e2e8f0">🐧 Open Source</text>
+      </g>
+    </g>
+
+    <!-- Sub-bar footer notes -->
+    <text x="450" y="295" text-anchor="middle" class="body-text" font-size="12" fill="#64748b" letter-spacing="0.5">
+      Remote Desktops • Application Streaming • Session Brokers • Browser Workspaces
+    </text>
+  </g>
+
+  <!-- Border Gradient Stroke -->
+  <rect width="1200" height="420" rx="16" fill="none" stroke="url(#cyan-glow)" stroke-width="1.5" opacity="0.3"/>
+</svg>
